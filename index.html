@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SC TECH - Assist  ncia Técnica de Celulares</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #0a192f 0%, #112240 50%, #0d1b32 100%);
+    }
+    
+    .gradient-card {
+      background: linear-gradient(145deg, #1a365d 0%, #0f2847 100%);
+    }
+    
+    .cyan-glow {
+      box-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
+    }
+    
+    .btn-3d {
+      transform: translateY(0);
+      box-shadow: 0 4px 0 #00838f, 0 6px 20px rgba(0, 188, 212, 0.4);
+      transition: all 0.15s ease;
+    }
+    
+    .btn-3d:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #00838f, 0 10px 30px rgba(0, 188, 212, 0.5);
+    }
+    
+    .btn-3d:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #00838f, 0 4px 15px rgba(0, 188, 212, 0.4);
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .slide-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .slide-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .service-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+    
+    .icon-container {
+      background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #00bcd4, #00e5ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .map-container {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(0, 188, 212, 0.4); }
+      50% { box-shadow: 0 0 40px rgba(0, 188, 212, 0.6); }
+    }
+    
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="w-full h-full overflow-auto"><!-- Header -->
+   <header class="gradient-bg sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+     <div class="flex items-center gap-3">
+      <div class="relative">
+       <svg class="w-10 h-10 text-cyan-400" viewbox="0 0 40 40" fill="none"><rect x="8" y="4" width="24" height="32" rx="4" stroke="currentColor" stroke-width="2.5" /> <rect x="14" y="8" width="12" height="20" rx="1" fill="currentColor" opacity="0.3" /> <circle cx="20" cy="32" r="2" fill="currentColor" />
+       </svg>
+       <svg class="w-5 h-5 text-green-400 absolute -top-1 -right-1" viewbox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+       </svg>
+      </div><span id="logo-text" class="text-2xl font-bold text-white tracking-tight">SC <span class="text-cyan-400">TECH</span></span>
+     </div>
+     <nav class="hidden md:flex items-center gap-8"><a href="#servicos" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Serviços</a> <a href="#porque" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Por que nós</a> <a href="#contato" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Contato</a>
+     </nav><a id="header-whatsapp" href="https://wa.me/5571991881544" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full font-semibold transition-all text-sm">
+      <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg> WhatsApp </a>
+    </div>
+   </header><!-- Hero Section -->
+   <section class="gradient-bg relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+     <div class="absolute top-20 left-10 w-72 h-72 bg-cyan-400 rounded-full filter blur-3xl"></div>
+     <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 py-16 md:py-24 relative z-10">
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="slide-up">
+       <h1 id="hero-title" class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">Na <span class="text-gradient">SC TECH</span>, seu celular está em boas mãos.</h1>
+       <p id="hero-subtitle" class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">Trabalhamos com conserto de celulares, troca de telas, baterias e reparos em geral.</p><a id="hero-whatsapp" href="https://wa.me/5571991881544" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-white px-8 py-4 rounded-xl font-bold text-lg btn-3d pulse-glow">
+        <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg> FALAR NO WHATSAPP </a>
+      </div>
+      <div class="fade-in float-animation">
+       <div class="relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl transform rotate-3 opacity-20"></div>
+        <div class="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 shadow-2xl border border-slate-700"><!-- Store Illustration -->
+         <svg viewbox="0 0 400 280" class="w-full h-auto"><!-- Background --> <rect x="0" y="0" width="400" height="280" fill="#1e293b" rx="12" /> <!-- Counter/Desk --> <rect x="20" y="160" width="360" height="100" fill="#334155" rx="8" /> <rect x="20" y="160" width="360" height="15" fill="#475569" rx="4" /> <!-- Display shelf --> <rect x="30" y="40" width="340" height="110" fill="#1e3a5f" rx="6" stroke="#00bcd4" stroke-width="2" /> <!-- Phones on display --> <rect x="50" y="60" width="40" height="70" fill="#0f172a" rx="6" stroke="#00bcd4" stroke-width="1" /> <rect x="55" y="65" width="30" height="50" fill="#1e293b" rx="2" /> <rect x="110" y="60" width="40" height="70" fill="#0f172a" rx="6" stroke="#00bcd4" stroke-width="1" /> <rect x="115" y="65" width="30" height="50" fill="#1e293b" rx="2" /> <rect x="170" y="60" width="40" height="70" fill="#0f172a" rx="6" stroke="#22d3ee" stroke-width="1" /> <rect x="175" y="65" width="30" height="50" fill="#0e7490" rx="2" /> <rect x="230" y="60" width="40" height="70" fill="#0f172a" rx="6" stroke="#00bcd4" stroke-width="1" /> <rect x="235" y="65" width="30" height="50" fill="#1e293b" rx="2" /> <rect x="290" y="60" width="40" height="70" fill="#0f172a" rx="6" stroke="#00bcd4" stroke-width="1" /> <rect x="295" y="65" width="30" height="50" fill="#1e293b" rx="2" /> <!-- Accessories --> <rect x="50" y="180" width="60" height="40" fill="#0d9488" rx="4" /> <text x="80" y="205" fill="white" font-size="8" text-anchor="middle">
+           Capas
+          </text> <rect x="130" y="180" width="60" height="40" fill="#0891b2" rx="4" /> <text x="160" y="205" fill="white" font-size="8" text-anchor="middle">
+           Películas
+          </text> <!-- Computer/Register --> <rect x="260" y="175" width="80" height="60" fill="#1e293b" rx="4" stroke="#475569" stroke-width="2" /> <rect x="270" y="185" width="60" height="35" fill="#0f172a" rx="2" /> <rect x="280" y="230" width="40" height="8" fill="#475569" rx="2" /> <!-- Logo on wall --> <text x="200" y="30" fill="#00bcd4" font-size="16" font-weight="bold" text-anchor="middle">
+           SC TECH
+          </text> <!-- Technician silhouette --> <circle cx="350" cy="140" r="15" fill="#64748b" /> <rect x="340" y="155" width="20" height="30" fill="#475569" rx="4" />
+         </svg>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Services Section -->
+   <section id="servicos" class="bg-gradient-to-b from-slate-100 to-white py-20">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="text-center mb-16 slide-up">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">NOSSOS <span class="text-cyan-600">SERVIÇOS</span></h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8"><!-- Service 1 -->
+      <div class="service-card rounded-2xl overflow-hidden shadow-lg card-hover fade-in">
+       <div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+        <svg class="w-24 h-24 text-white" viewbox="0 0 100 100" fill="none"><rect x="25" y="10" width="50" height="80" rx="8" stroke="currentColor" stroke-width="3" /> <rect x="30" y="18" width="40" height="55" rx="2" fill="currentColor" opacity="0.3" /> <path d="M30 45 L70 45" stroke="currentColor" stroke-width="2" stroke-dasharray="4 2" /> <circle cx="50" cy="82" r="4" fill="currentColor" /> <path d="M45 30 L55 40 L45 50" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <h3 class="text-xl font-bold text-slate-800 mb-3">Troca de Tela</h3>
+        <p class="text-gray-600 leading-relaxed">Tela quebrada ou sem responder ao toque? Na SC TECH, realizamos a troca de tela com peças de qualidade, acabamento profissional e garantia no serviço. Seu celular volta a ficar como novo, rápido e sem dor de cabeça.</p>
+       </div>
+      </div><!-- Service 2 -->
+      <div class="service-card rounded-2xl overflow-hidden shadow-lg card-hover fade-in" style="transition-delay: 0.1s;">
+       <div class="h-48 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+        <svg class="w-24 h-24 text-white" viewbox="0 0 100 100" fill="none"><rect x="30" y="25" width="40" height="60" rx="6" stroke="currentColor" stroke-width="3" /> <rect x="38" y="40" width="24" height="35" rx="3" fill="currentColor" opacity="0.3" /> <path d="M44 55 L56 55 M50 50 L50 60" stroke="currentColor" stroke-width="2" stroke-linecap="round" /> <path d="M70 35 L80 25 M80 35 L70 25" stroke="currentColor" stroke-width="3" stroke-linecap="round" /> <path d="M20 70 C20 70 25 60 30 70" stroke="currentColor" stroke-width="2" stroke-linecap="round" /> <circle cx="50" cy="32" r="3" fill="currentColor" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <h3 class="text-xl font-bold text-slate-800 mb-3">Substituição de Bateria</h3>
+        <p class="text-gray-600 leading-relaxed">Seu celular descarrega rápido ou desliga sozinho? Fazemos a troca de bateria com segurança, melhorando o desempenho e a autonomia do aparelho. Mais tempo de uso, menos preocupação.</p>
+       </div>
+      </div><!-- Service 3 -->
+      <div class="service-card rounded-2xl overflow-hidden shadow-lg card-hover fade-in" style="transition-delay: 0.2s;">
+       <div class="h-48 bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+        <svg class="w-24 h-24 text-white" viewbox="0 0 100 100" fill="none"><rect x="30" y="15" width="40" height="70" rx="6" stroke="currentColor" stroke-width="3" /> <rect x="35" y="22" width="30" height="45" rx="2" fill="currentColor" opacity="0.3" /> <circle cx="50" cy="75" r="4" fill="currentColor" /> <!-- Connector --> <path d="M45 85 L55 85 L55 95 L45 95 Z" fill="currentColor" /> <path d="M48 95 L48 100 M52 95 L52 100" stroke="currentColor" stroke-width="2" /> <!-- Lightning bolt --> <path d="M52 30 L48 42 L54 42 L50 55" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /> <!-- Power button --> <rect x="70" y="35" width="5" height="15" rx="2" fill="currentColor" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <h3 class="text-xl font-bold text-slate-800 mb-3">Reparo de Conector e Botões</h3>
+        <p class="text-gray-600 leading-relaxed">Problemas para carregar ou botões que não funcionam? Identificamos e resolvemos falhas em conectores, botões de volume, power e outros componentes, garantindo o funcionamento correto do seu celular.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Why Choose Us Section -->
+   <section id="porque" class="gradient-bg py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+     <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-400 rounded-full filter blur-3xl"></div>
+     <div class="absolute bottom-0 left-0 w-72 h-72 bg-blue-500 rounded-full filter blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+     <div class="text-center mb-16 slide-up">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Por que escolher a <span class="text-gradient">SC TECH</span>?</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8"><!-- Card 1 -->
+      <div class="gradient-card rounded-2xl p-8 text-center card-hover fade-in border border-slate-600/30">
+       <div class="icon-container w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold text-white mb-3">Atendimento Rápido</h3>
+       <p class="text-gray-300 leading-relaxed">Sabemos que seu tempo é importante. Consertos ágeis, sem enrolação.</p>
+      </div><!-- Card 2 -->
+      <div class="gradient-card rounded-2xl p-8 text-center card-hover fade-in border border-slate-600/30" style="transition-delay: 0.1s;">
+       <div class="icon-container w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold text-white mb-3">Garantia nos Serviços</h3>
+       <p class="text-gray-300 leading-relaxed">Todos os serviços com garantia para sua tranquilidade e confiança.</p>
+      </div><!-- Card 3 -->
+      <div class="gradient-card rounded-2xl p-8 text-center card-hover fade-in border border-slate-600/30" style="transition-delay: 0.2s;">
+       <div class="icon-container w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold text-white mb-3">Preço Justo e Transparente</h3>
+       <p class="text-gray-300 leading-relaxed">Orçamento claro, sem taxas escondidas ou surpresas no final.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contato" class="bg-gradient-to-b from-slate-100 to-white py-20">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="text-center mb-16 slide-up">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-2">PRECISOU DE <span class="text-cyan-600">AJUDA?</span></h2>
+      <p class="text-xl text-gray-600 font-medium">AGENDE SEU CONSERTO</p>
+      <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full mt-4"></div>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-12"><!-- Contact Info -->
+      <div class="fade-in">
+       <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+        <div class="text-center mb-8"><a id="calendar-link" href="https://calendar.google.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg> Agendar Data </a>
+        </div>
+        <div class="space-y-6">
+         <div class="flex items-center gap-4 p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
+          <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+           <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+           </svg>
+          </div>
+          <div>
+           <p class="text-sm text-gray-500 font-medium">Email</p><a id="email-link" href="mailto:sctech.suporte@gmail.com" class="text-slate-800 font-semibold hover:text-cyan-600 transition-colors">sctech.suporte@gmail.com</a>
+          </div>
+         </div><a id="phone-whatsapp" href="https://wa.me/5571991881544" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 bg-slate-50 rounded-xl hover:bg-green-50 transition-colors group">
+          <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+           <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+           </svg>
+          </div>
+          <div>
+           <p class="text-sm text-gray-500 font-medium">Telefone / WhatsApp</p><span id="phone-display" class="text-slate-800 font-semibold group-hover:text-green-600 transition-colors">+55 (71) 99188-1544</span>
+          </div></a>
+         <div class="flex items-center gap-4 p-4 bg-slate-50 rounded-xl">
+          <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-rose-600 rounded-full flex items-center justify-center flex-shrink-0">
+           <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+           </svg>
+          </div>
+          <div>
+           <p class="text-sm text-gray-500 font-medium">Endereço</p>
+           <p class="text-slate-800 font-semibold">Rua Muniz Travasso Coutos, 25E</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Map -->
+      <div class="fade-in" style="transition-delay: 0.1s;">
+       <div class="map-container h-full min-h-[500px] bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
+        <svg class="w-16 h-16 text-cyan-400 mb-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <h3 class="text-2xl font-bold text-white mb-2">Onde nos encontrar</h3>
+        <p class="text-gray-300 mb-4">Rua Muniz Travasso Coutos, 25E</p>
+        <p class="text-gray-400 text-sm mb-6">Feira de Santana - Bahia</p><a href="https://maps.google.com/?q=Rua+Muniz+Travasso+Coutos,+25E,+Feira+de+Santana,+BA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold transition-all">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4m-4-6l5-5m0 0l-5 5m5-5v12" />
+         </svg> Ver no Google Maps </a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="gradient-bg py-8">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+       <div class="relative">
+        <svg class="w-8 h-8 text-cyan-400" viewbox="0 0 40 40" fill="none"><rect x="8" y="4" width="24" height="32" rx="4" stroke="currentColor" stroke-width="2.5" /> <rect x="14" y="8" width="12" height="20" rx="1" fill="currentColor" opacity="0.3" /> <circle cx="20" cy="32" r="2" fill="currentColor" />
+        </svg>
+        <svg class="w-4 h-4 text-green-400 absolute -top-1 -right-1" viewbox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+       </div><span class="text-xl font-bold text-white">SC <span class="text-cyan-400">TECH</span></span>
+      </div>
+      <p class="text-gray-400 text-sm">© 2024 SC TECH - Assistência Técnica de Celulares. Todos os direitos reservados.</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      hero_title: 'Na SC TECH, seu celular está em boas mãos.',
+      hero_subtitle: 'Trabalhamos com conserto de celulares, troca de telas, baterias e reparos em geral.',
+      whatsapp_number: '5571991881544',
+      email_contact: 'sctech.suporte@gmail.com',
+      phone_display: '+55 (71) 99188-1544',
+      calendar_link: 'https://calendar.google.com',
+      background_color: '#0a192f',
+      accent_color: '#00bcd4',
+      text_color: '#ffffff',
+      card_color: '#1a365d',
+      button_color: '#00bcd4'
+    };
+    
+    // Scroll animation observer
+    function initScrollAnimations() {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+      
+      document.querySelectorAll('.fade-in, .slide-up').forEach(el => {
+        observer.observe(el);
+      });
+    }
+    
+    // Update UI with config
+    async function onConfigChange(config) {
+      const whatsappUrl = `https://wa.me/${config.whatsapp_number || defaultConfig.whatsapp_number}`;
+      
+      // Update hero section
+      const heroTitle = document.getElementById('hero-title');
+      if (heroTitle) {
+        heroTitle.innerHTML = `Na <span class="text-gradient">SC TECH</span>, ${(config.hero_title || defaultConfig.hero_title).replace('Na SC TECH, ', '')}`;
+      }
+      
+      const heroSubtitle = document.getElementById('hero-subtitle');
+      if (heroSubtitle) {
+        heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      }
+      
+      // Update WhatsApp links
+      const headerWhatsapp = document.getElementById('header-whatsapp');
+      if (headerWhatsapp) headerWhatsapp.href = whatsappUrl;
+      
+      const heroWhatsapp = document.getElementById('hero-whatsapp');
+      if (heroWhatsapp) heroWhatsapp.href = whatsappUrl;
+      
+      const phoneWhatsapp = document.getElementById('phone-whatsapp');
+      if (phoneWhatsapp) phoneWhatsapp.href = whatsappUrl;
+      
+      // Update contact info
+      const emailLink = document.getElementById('email-link');
+      if (emailLink) {
+        const email = config.email_contact || defaultConfig.email_contact;
+        emailLink.href = `mailto:${email}`;
+        emailLink.textContent = email;
+      }
+      
+      const phoneDisplay = document.getElementById('phone-display');
+      if (phoneDisplay) {
+        phoneDisplay.textContent = config.phone_display || defaultConfig.phone_display;
+      }
+      
+      // Update calendar link
+      const calendarLink = document.getElementById('calendar-link');
+      if (calendarLink) {
+        calendarLink.href = config.calendar_link || defaultConfig.calendar_link;
+      }
+    }
+    
+    // Map config to capabilities
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.card_color || defaultConfig.card_color,
+            set: (value) => {
+              config.card_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ card_color: value });
+            }
+          },
+          {
+            get: () => config.button_color || defaultConfig.button_color,
+            set: (value) => {
+              config.button_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ button_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+    
+    // Map config to edit panel values
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['hero_title', config.hero_title || defaultConfig.hero_title],
+        ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+        ['whatsapp_number', config.whatsapp_number || defaultConfig.whatsapp_number],
+        ['email_contact', config.email_contact || defaultConfig.email_contact],
+        ['phone_display', config.phone_display || defaultConfig.phone_display],
+        ['calendar_link', config.calendar_link || defaultConfig.calendar_link]
+      ]);
+    }
+    
+    // Initialize
+    async function init() {
+      initScrollAnimations();
+      
+      if (window.elementSdk) {
+        await window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities,
+          mapToEditPanelValues
+        });
+      } else {
+        onConfigChange(defaultConfig);
+      }
+    }
+    
+    init();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cb88ebe84e2f637',t:'MTc3MDY5NDUzOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
